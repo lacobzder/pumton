@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>PUMTON . the coronation</title>
+  <meta name="description" content="pumton is king for exactly as long as someone holds the crown on. hold it." />
+  <meta name="theme-color" content="#DCC9B9" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PUMTON . the coronation" />
+  <meta property="og:description" content="pumton is king for exactly as long as someone holds the crown on. hold it." />
+  <meta property="og:url" content="https://pumton.vercel.app" />
+  <meta property="og:image" content="https://pumton.vercel.app/assets/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PUMTON . the coronation" />
+  <meta name="twitter:description" content="pumton is king for exactly as long as someone holds the crown on. hold it." />
+  <meta name="twitter:image" content="https://pumton.vercel.app/assets/og.jpg" />
+  <script>
+    window.addEventListener("error", function (e) {
+      var b = document.getElementById("err") || document.createElement("div");
+      b.id = "err";
+      b.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#8E2A22;color:#fff;font:600 13px/1.4 monospace;padding:10px 14px";
+      b.textContent = "the crown slipped: " + (e.message || e.type);
+      document.body && document.body.appendChild(b);
+    });
+  </script>
+  <link rel="preload" as="image" href="/assets/plate.jpg" />
+</head>
+<body>
+  <!-- I. THE CORONATION -->
+  <section class="hero" aria-label="the coronation">
+    <header class="bar">
+      <span class="bar-l">An Order of Service</span>
+      <span class="bar-c">$PUMTON</span>
+      <button class="snd" id="snd" type="button" aria-pressed="true">trumpets: <b>on</b></button>
+    </header>
+
+    <div class="stage">
+      <div class="plate" id="plate" aria-label="press and hold to keep the crown on pumton">
+        <div class="world" id="world">
+          <img class="bare" src="/assets/plate.jpg" alt="pumton, a small shiba pup holding a green and white sceptre, and the kingmaker in a pink knitted hat reaching to his head" width="1500" height="500" />
+          <img class="crown" id="crown" src="/assets/crown.png" alt="" width="112" height="76" draggable="false" />
+        </div>
+        <span class="grip" id="grip" aria-hidden="true">your hand is here</span>
+      </div>
+
+      <div class="title-block">
+        <p class="kicker">the coronation of</p>
+        <h1>Pumton</h1>
+        <p class="sub">king for exactly as long as someone is holding the crown on.</p>
+      </div>
+
+      <div class="panel">
+        <div class="readout" aria-live="off">
+          <span class="lbl">now reigning</span>
+          <b class="king" id="king">nobody</b>
+          <span class="clock" id="clock">00:00.00</span>
+          <span class="epi" id="epi">the throne is empty</span>
+        </div>
+        <button class="hold" id="hold" type="button">
+          <span class="hold-fill" id="holdFill"></span>
+          <span class="hold-t">hold the crown on</span>
+        </button>
+        <p class="hint">or press and hold the picture. the space bar also has hands.</p>
+        <p class="herald" id="herald" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- II. THE ORDER OF SERVICE -->
+  <section class="service" aria-label="the order of service">
+    <div class="booklet">
+      <p class="folio">ii</p>
+      <h2>The Order of Service</h2>
+      <p class="rubric center">The congregation will remain standing for as long as the crown does.</p>
+      <ol class="rite">
+        <li>
+          <h3><span>1</span> The Entrance</h3>
+          <p>Pumton does not walk in. He is placed, already sitting, already holding the sceptre.</p>
+        </li>
+        <li>
+          <h3><span>2</span> The Recognition</h3>
+          <p>The congregation is asked whether it recognises him.</p>
+          <p class="rubric">All shall say: it is a dog.</p>
+        </li>
+        <li>
+          <h3><span>3</span> The Oath</h3>
+          <p>He is asked to promise things. He holds the sceptre a little tighter. This is accepted as an answer.</p>
+        </li>
+        <li>
+          <h3><span>4</span> The Anointing</h3>
+          <p>Traditionally oil. Here, one green and white sceptre the size of his whole arm, which he was holding before anyone arrived.</p>
+        </li>
+        <li>
+          <h3><span>5</span> The Crowning</h3>
+          <p>The crown is set on his head by the one in the knitted hat. It does not stay on by itself.</p>
+          <p class="rubric">Someone must keep holding it. That someone is you.</p>
+        </li>
+        <li>
+          <h3><span>6</span> The Homage</h3>
+          <p>Each person present holds the crown for as long as they can. Every hold makes a new king, numbered in order.</p>
+        </li>
+        <li>
+          <h3><span>7</span> The Recess</h3>
+          <p>The crown falls. It is picked up off the floor.</p>
+          <p class="rubric">The service resumes at 5.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- III. THE ROLL OF KINGS -->
+  <section class="roll" aria-label="the roll of kings">
+    <div class="roll-in">
+      <p class="folio">iii</p>
+      <h2>The Roll of Kings</h2>
+      <p class="roll-note">Every Pumton crowned on this device, in order of succession. Kept here, on this device, by you.</p>
+      <dl class="tally">
+        <div><dt>kings crowned</dt><dd id="tKings">0</dd></div>
+        <div><dt>longest reign</dt><dd id="tLong">none yet</dd></div>
+        <div><dt>time under the crown</dt><dd id="tTotal">0.0s</dd></div>
+        <div><dt>crown hit the floor</dt><dd id="tFalls">0</dd></div>
+      </dl>
+      <ol class="kings" id="kings"></ol>
+      <p class="empty" id="empty">No kings yet. The throne has been empty since you arrived.</p>
+    </div>
+  </section>
+
+  <!-- IV. THE REGALIA -->
+  <section class="regalia" aria-label="the regalia">
+    <p class="folio">iv</p>
+    <h2>The Regalia</h2>
+    <div class="cases">
+      <figure class="case">
+        <div class="vitrine"><img src="/assets/regalia-crown.jpg" alt="the crown: gold coloured, one red stone, two blue, a row of small clear ones" width="312" height="220" loading="lazy" /></div>
+        <figcaption>
+          <b>The Crown</b>
+          <span>Gold coloured. One red stone, two blue, a row of small clear ones. Has spent more of its life on the floor than any crown in history.</span>
+          <em id="crownFalls">dropped 0 times on this device</em>
+        </figcaption>
+      </figure>
+      <figure class="case">
+        <div class="vitrine tall"><img src="/assets/regalia-sceptre.jpg" alt="the sceptre: green and white, held in both paws" width="500" height="656" loading="lazy" /></div>
+        <figcaption>
+          <b>The Sceptre</b>
+          <span>Green and white. Held in both paws, against the chest. Nobody has asked him to put it down and nobody is going to.</span>
+          <em>held continuously since before the service</em>
+        </figcaption>
+      </figure>
+      <figure class="case">
+        <div class="vitrine"><img src="/assets/regalia-hat.jpg" alt="the hat: pink, knitted, worn by the kingmaker" width="440" height="372" loading="lazy" /></div>
+        <figcaption>
+          <b>The Hat</b>
+          <span>Pink, knitted. Not regalia. Belongs to the kingmaker, who has crowned every Pumton there has ever been and has never once been crowned.</span>
+          <em>he has not asked</em>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- V. THE PROCLAMATION -->
+  <section class="proclaim" aria-label="the proclamation">
+    <div class="parchment">
+      <p class="folio">v</p>
+      <h2>Proclamation</h2>
+      <p class="decree">
+        <span class="drop">W</span>hereas the crown does not stay on by itself, and whereas somebody has to hold it, it is hereby proclaimed that
+        <b>Pumton</b> is king of everything he can see from where he is sitting, for exactly as long as he is being held, and that every hold is a reign, and every reign is recorded.
+      </p>
+      <p class="given">Given on Solana, under the seal below.</p>
+      <div class="sealrow">
+        <button class="seal" id="seal" type="button" aria-label="copy the contract address">
+          <span class="wax"><img src="/assets/crown.png" alt="" width="112" height="76" /></span>
+          <span class="seal-t">break the seal<br /><small>copy contract</small></span>
+        </button>
+        <code class="ca" id="ca">PUMTON_CROWN_STILL_BEING_HELD_ON_pump</code>
+      </div>
+      <a class="circular" id="xlink" href="https://x.com/" target="_blank" rel="noopener">
+        <span class="xmark" aria-hidden="true"><i></i><i></i></span>
+        read the court circular
+      </a>
+    </div>
+    <footer class="foot">
+      <p>long may he reign, give or take a few seconds.</p>
+      <p class="fine">$PUMTON . fan-made . the crown is a picture of a crown.</p>
+    </footer>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

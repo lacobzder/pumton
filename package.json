@@ -1,0 +1,28 @@
+{
+  "name": "pumton",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "assets": "node scripts/build-assets.mjs"
+  },
+  "dependencies": {
+    "@fontsource/fragment-mono": "^5.3.0",
+    "@fontsource/spectral": "^5.3.0",
+    "@fontsource/unifrakturmaguntia": "^5.3.0",
+    "planck": "^1.5.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "sharp": "^0.35.5",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.5"
+  },
+  "allowScripts": {
+    "sharp@0.35.5": true,
+    "esbuild@0.25.12": true
+  }
+}

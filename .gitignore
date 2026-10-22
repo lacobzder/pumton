@@ -1,0 +1,7 @@
+node_modules
+dist
+scratch
+qa-shots
+config.local.js
+.vercel
+.env*

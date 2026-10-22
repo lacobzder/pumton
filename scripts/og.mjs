@@ -1,0 +1,13 @@
+import { chromium } from "playwright";
+import { pathToFileURL } from "node:url";
+import { resolve } from "node:path";
+import sharp from "sharp";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1200, height: 630 } });
+await p.goto(pathToFileURL(resolve("scripts/og.html")).href);
+await p.evaluate(() => document.fonts.ready);
+await p.waitForTimeout(300);
+const png = await p.screenshot();
+await sharp(png).jpeg({ quality: 88, mozjpeg: true }).toFile("public/assets/og.jpg");
+await b.close();
+console.log("og done");
