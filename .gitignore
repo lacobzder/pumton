@@ -5,3 +5,6 @@ qa-shots
 config.local.js
 .vercel
 .env*
+
+.vercel
+.env*
